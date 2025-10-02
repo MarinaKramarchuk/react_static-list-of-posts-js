@@ -1,5 +1,5 @@
 import './PostInfo.scss';
-import { UserInfo } from '../UserInfo';
+import { UserInfo } from '../UserInfo/UserInfo';
 import { CommentList } from '../CommentList/CommentList';
 
 export const PostInfo = ({ post }) => (
@@ -17,7 +17,7 @@ export const PostInfo = ({ post }) => (
     <p className="PostInfo__body">{post.body}</p>
 
     <hr />
-    {post.comments.length === 0 ? (
+    {Array.isArray(post.comments) && post.comments.length === 0 ? (
       <b data-cy="NoCommentsMessage">No comments yet</b>
     ) : (
       <CommentList comments={post.comments} />
